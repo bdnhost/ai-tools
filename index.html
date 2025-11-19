@@ -453,41 +453,132 @@
             '/AIToolBuzz.csv'
         ];
 
-        // Category Translations
-        const CATEGORY_TRANSLATIONS = {
-            'Communication And Support': 'תקשורת ותמיכה',
-            'Operations And Management': 'ניהול ותפעול',
-            'Ai And Machine Learning': 'בינה מלאכותית ולמידת מכונה',
-            'Content Creation': 'יצירת תוכן',
-            'Marketing And Sales': 'שיווק ומכירות',
-            'Design And Creativity': 'עיצוב ויצירתיות',
-            'Data Analysis': 'ניתוח נתונים',
-            'Development And Code': 'פיתוח וקוד',
-            'Education And Learning': 'חינוך ולמידה',
-            'Productivity': 'פרודוקטיביות',
-            'Video And Audio': 'וידאו ואודיו',
-            'Research': 'מחקר',
-            'Customer Service': 'שירות לקוחות',
-            'Writing': 'כתיבה',
-            'Image Generation': 'יצירת תמונות',
-            'Social Media': 'רשתות חברתיות',
-            'SEO': 'קידום אתרים',
-            'Human Resources': 'משאבי אנוש',
-            'Finance': 'פיננסים',
-            'Healthcare': 'בריאות',
-            'Legal': 'משפט',
-            'E-commerce': 'מסחר אלקטרוני',
-            'Gaming': 'משחקים',
-            'Music': 'מוזיקה',
-            'Translation': 'תרגום',
-            'Security': 'אבטחה',
-            'Automation': 'אוטומציה',
-            'Chatbots': 'צ\'אטבוטים',
-            'Voice': 'קול',
-            'Text To Speech': 'טקסט לדיבור',
-            'Speech To Text': 'דיבור לטקסט',
-            'Other': 'אחר'
+        // Translations - מערכת תרגום מלאה
+        const TRANSLATIONS = {
+            categories: {
+                'Communication And Support': 'תקשורת ותמיכה',
+                'Operations And Management': 'ניהול ותפעול',
+                'Ai And Machine Learning': 'בינה מלאכותית ולמידת מכונה',
+                'Content Creation': 'יצירת תוכן',
+                'Marketing And Sales': 'שיווק ומכירות',
+                'Design And Creativity': 'עיצוב ויצירתיות',
+                'Data Analysis': 'ניתוח נתונים',
+                'Development And Code': 'פיתוח וקוד',
+                'Education And Learning': 'חינוך ולמידה',
+                'Productivity': 'פרודוקטיביות',
+                'Video And Audio': 'וידאו ואודיו',
+                'Research': 'מחקר',
+                'Customer Service': 'שירות לקוחות',
+                'Writing': 'כתיבה',
+                'Image Generation': 'יצירת תמונות',
+                'Social Media': 'רשתות חברתיות',
+                'SEO': 'קידום אתרים',
+                'Human Resources': 'משאבי אנוש',
+                'Finance': 'פיננסים',
+                'Healthcare': 'בריאות',
+                'Legal': 'משפט',
+                'E-commerce': 'מסחר אלקטרוני',
+                'Gaming': 'משחקים',
+                'Music': 'מוזיקה',
+                'Translation': 'תרגום',
+                'Security': 'אבטחה',
+                'Automation': 'אוטומציה',
+                'Chatbots': 'צ\'אטבוטים',
+                'Voice': 'קול',
+                'Text To Speech': 'טקסט לדיבור',
+                'Speech To Text': 'דיבור לטקסט',
+                'Other': 'אחר'
+            },
+            fields: {
+                'Name': 'שם',
+                'Category': 'קטגוריה',
+                'Short Description': 'תיאור קצר',
+                'Primary Task': 'משימה ראשית',
+                'Year Founded': 'שנת ייסוד',
+                'Country': 'מדינה',
+                'Website': 'אתר אינטרנט',
+                'Website Status': 'סטטוס האתר',
+                'Keywords': 'מילות מפתח',
+                'industry': 'תעשייה',
+                'Logo': 'לוגו',
+                'Link': 'קישור'
+            },
+            status: {
+                'Active': 'פעיל',
+                'Inactive': 'לא פעיל',
+                'Unknown': 'לא ידוע'
+            },
+            countries: {
+                'United States': 'ארצות הברית',
+                'USA': 'ארה"ב',
+                'United Kingdom': 'בריטניה',
+                'UK': 'בריטניה',
+                'Israel': 'ישראל',
+                'Canada': 'קנדה',
+                'Germany': 'גרמניה',
+                'France': 'צרפת',
+                'China': 'סין',
+                'Japan': 'יפן',
+                'India': 'הודו',
+                'Australia': 'אוסטרליה',
+                'Netherlands': 'הולנד',
+                'Switzerland': 'שוויץ',
+                'Sweden': 'שבדיה',
+                'Singapore': 'סינגפור',
+                'South Korea': 'דרום קוריאה',
+                'Spain': 'ספרד',
+                'Italy': 'איטליה',
+                'Russia': 'רוסיה',
+                'Brazil': 'ברזיל',
+                'Mexico': 'מקסיקו',
+                'Poland': 'פולין',
+                'Turkey': 'טורקיה',
+                'Argentina': 'ארגנטינה',
+                'Belgium': 'בלגיה',
+                'Austria': 'אוסטריה',
+                'Denmark': 'דנמרק',
+                'Finland': 'פינלנד',
+                'Norway': 'נורווגיה',
+                'Ireland': 'אירלנד',
+                'New Zealand': 'ניו זילנד',
+                'UAE': 'איחוד האמירויות',
+                'Saudi Arabia': 'ערב הסעודית'
+            },
+            ui: {
+                'loading': 'טוען...',
+                'error': 'שגיאה',
+                'try_again': 'נסה שוב',
+                'no_data': 'אין נתונים',
+                'search': 'חיפוש',
+                'filter': 'סינון',
+                'sort': 'מיון',
+                'export': 'ייצוא',
+                'share': 'שיתוף',
+                'close': 'סגור',
+                'save': 'שמור',
+                'cancel': 'ביטול',
+                'delete': 'מחק',
+                'edit': 'ערוך',
+                'view': 'צפה',
+                'details': 'פרטים',
+                'more': 'עוד',
+                'less': 'פחות',
+                'all': 'הכל',
+                'none': 'ללא',
+                'yes': 'כן',
+                'no': 'לא',
+                'ok': 'אישור'
+            }
         };
+
+        // תרגום מדינות
+        function translateCountry(country) {
+            if (!country) return 'לא ידוע';
+            return TRANSLATIONS.countries[country] || country;
+        }
+
+        // תרגום קטגוריות (לתאימות לאחור)
+        const CATEGORY_TRANSLATIONS = TRANSLATIONS.categories;
 
         const CATEGORY_ICONS = {
             'Communication And Support': '💬',
@@ -1044,7 +1135,7 @@
                         new Chart(countryCtx, {
                             type: 'bar',
                             data: {
-                                labels: sortedCountries.map(([country]) => country),
+                                labels: sortedCountries.map(([country]) => translateCountry(country)),
                                 datasets: [{
                                     label: 'מספר כלים',
                                     data: sortedCountries.map(([, count]) => count),
@@ -1133,7 +1224,7 @@
                                     <div class="space-y-2 text-sm">
                                         <div><strong>קטגוריה:</strong> ${translateCategory(tool.Category)}</div>
                                         <div><strong>שנה:</strong> ${tool['Year Founded'] || 'לא ידוע'}</div>
-                                        <div><strong>מדינה:</strong> ${tool.Country || 'לא ידוע'}</div>
+                                        <div><strong>מדינה:</strong> ${translateCountry(tool.Country)}</div>
                                         <div><strong>תיאור:</strong> ${tool['Short Description']}</div>
                                     </div>
                                 </div>
@@ -1354,7 +1445,7 @@
                                         {selectedTool.Country && (
                                             <div>
                                                 <strong className="text-primary">מדינה:</strong>
-                                                <p className="text-secondary mt-1">{selectedTool.Country}</p>
+                                                <p className="text-secondary mt-1">{translateCountry(selectedTool.Country)}</p>
                                             </div>
                                         )}
                                         {selectedTool.Website && (
