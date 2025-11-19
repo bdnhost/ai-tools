@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>כלי בינה מלאכותית | דשבורד מתקדם של כלי AI מובילים 2025 | BDNHOST</title>
+    <meta name="description" content="דשבורד מתקדם עם מעל 1000 כלי AI: מצב לילה, מועדפים, השוואה, גרפים, ועוד. ChatGPT, Claude, Google Gemini ועוד הרבה יותר!">
+    <meta name="keywords" content="בינה מלאכותית, כלי AI, ChatGPT, Claude, דשבורד AI משופר, מצב לילה, BDNHOST">
+    <meta name="robots" content="index, follow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            font-family: 'Heebo', sans-serif;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dark Mode Variables */
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body.light-mode {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-tertiary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+        }
+
+        body.dark-mode {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+            --border-color: #334155;
+            --shadow: rgba(0, 0, 0, 0.5);
+            --gradient-start: #7c3aed;
+            --gradient-end: #db2777;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .bg-primary { background-color: var(--bg-primary); }
+        .bg-secondary { background-color: var(--bg-secondary); }
+        .bg-tertiary { background-color: var(--bg-tertiary); }
+        .text-primary { color: var(--text-primary); }
+        .text-secondary { color: var(--text-secondary); }
+        .text-tertiary { color: var(--text-tertiary); }
+        .border-custom { border-color: var(--border-color); }
+
+        /* Enhanced Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .animate-slide-in {
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 50%, var(--bg-tertiary) 75%);
+            background-size: 2000px 100%;
+            animation: shimmer 2s infinite;
+            border-radius: 1rem;
+        }
+
+        /* Tool Card Enhanced */
+        .tool-card {
+            background-color: var(--bg-secondary);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end), #f093fb, #f5576c);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .tool-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px var(--shadow);
+            border-color: var(--gradient-start);
+        }
+
+        /* Favorite Button */
+        .favorite-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .favorite-btn:hover {
+            transform: scale(1.15);
+        }
+
+        .favorite-btn.active {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border-color: #dc2626;
+        }
+
+        /* Compare Checkbox */
+        .compare-checkbox {
+            position: absolute;
+            top: 4.5rem;
+            right: 1rem;
+            z-index: 10;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border-radius: 1.5rem;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideInUp 0.4s ease;
+            border: 2px solid var(--border-color);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 999;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.1);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            bottom: 0;
+            width: 400px;
+            background: var(--bg-secondary);
+            border-left: 2px solid var(--border-color);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 998;
+            overflow-y: auto;
+            box-shadow: -10px 0 30px var(--shadow);
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        /* Compare Bar */
+        .compare-bar {
+            position: fixed;
+            bottom: -100px;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border-top: 2px solid var(--border-color);
+            padding: 1rem 2rem;
+            transition: bottom 0.4s ease;
+            z-index: 997;
+            box-shadow: 0 -10px 30px var(--shadow);
+        }
+
+        .compare-bar.active {
+            bottom: 0;
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Stats Card */
+        .stat-card {
+            background: var(--bg-secondary);
+            transition: var(--transition);
+            border: 2px solid var(--border-color);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px var(--shadow);
+            border-color: var(--gradient-start);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-tertiary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--gradient-end), var(--gradient-start));
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-right: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            right: calc(50% - 12px);
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 50%;
+            border: 4px solid var(--bg-primary);
+            box-shadow: 0 0 0 4px var(--border-color);
+        }
+
+        /* Filter Pills */
+        .filter-pill {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .filter-pill:hover {
+            border-color: var(--gradient-start);
+            transform: translateY(-2px);
+        }
+
+        .filter-pill.active {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Export Button */
+        .export-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            transition: var(--transition);
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .theme-toggle {
+                width: 50px;
+                height: 50px;
+                top: 15px;
+                left: 15px;
+            }
+
+            .tool-card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode min-h-screen">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <span class="text-3xl" id="themeIcon">🌙</span>
+    </div>
+
+    <!-- Sidebar Stats Button -->
+    <button class="fixed top-20 left-5 z-999 bg-secondary border-2 border-custom rounded-full w-14 h-14 flex items-center justify-center text-2xl hover:scale-110 transition-transform shadow-lg" id="sidebarToggle">
+        📊
+    </button>
+
+    <div id="root"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold gradient-text">סטטיסטיקות מתקדמות</h2>
+                <button class="text-3xl hover:scale-110 transition-transform" id="closeSidebar">×</button>
+            </div>
+            <div id="sidebarContent"></div>
+        </div>
+    </div>
+
+    <!-- Compare Bar -->
+    <div class="compare-bar" id="compareBar">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <span class="font-bold text-lg">🔄 השוואה:</span>
+                <div id="compareList" class="flex gap-2"></div>
+            </div>
+            <div class="flex gap-3">
+                <button id="compareBtn" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-xl font-bold hover:shadow-xl transition-all">
+                    השווה עכשיו
+                </button>
+                <button id="clearCompare" class="bg-gray-500 text-white px-6 py-2 rounded-xl font-bold hover:bg-gray-600 transition-all">
+                    נקה
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useMemo, useEffect, useCallback } = React;
+
+        const ITEMS_PER_PAGE = 12;
+        const BDNHOST_REF = '?ref=bdnhost.net';
+        const MAX_COMPARE = 4;
+
+        const CSV_PATHS = [
+            './AIToolBuzz.csv',
+            'AIToolBuzz.csv',
+            '../AIToolBuzz.csv',
+            '/AIToolBuzz.csv'
+        ];
+
+        // Category Translations
+        const CATEGORY_TRANSLATIONS = {
+            'Communication And Support': 'תקשורת ותמיכה',
+            'Operations And Management': 'ניהול ותפעול',
+            'Ai And Machine Learning': 'בינה מלאכותית ולמידת מכונה',
+            'Content Creation': 'יצירת תוכן',
+            'Marketing And Sales': 'שיווק ומכירות',
+            'Design And Creativity': 'עיצוב ויצירתיות',
+            'Data Analysis': 'ניתוח נתונים',
+            'Development And Code': 'פיתוח וקוד',
+            'Education And Learning': 'חינוך ולמידה',
+            'Productivity': 'פרודוקטיביות',
+            'Video And Audio': 'וידאו ואודיו',
+            'Research': 'מחקר',
+            'Customer Service': 'שירות לקוחות',
+            'Writing': 'כתיבה',
+            'Image Generation': 'יצירת תמונות',
+            'Social Media': 'רשתות חברתיות',
+            'SEO': 'קידום אתרים',
+            'Human Resources': 'משאבי אנוש',
+            'Finance': 'פיננסים',
+            'Healthcare': 'בריאות',
+            'Legal': 'משפט',
+            'E-commerce': 'מסחר אלקטרוני',
+            'Gaming': 'משחקים',
+            'Music': 'מוזיקה',
+            'Translation': 'תרגום',
+            'Security': 'אבטחה',
+            'Automation': 'אוטומציה',
+            'Chatbots': 'צ\'אטבוטים',
+            'Voice': 'קול',
+            'Text To Speech': 'טקסט לדיבור',
+            'Speech To Text': 'דיבור לטקסט',
+            'Other': 'אחר'
+        };
+
+        const CATEGORY_ICONS = {
+            'Communication And Support': '💬',
+            'Operations And Management': '⚙️',
+            'Ai And Machine Learning': '🤖',
+            'Content Creation': '✍️',
+            'Marketing And Sales': '📈',
+            'Design And Creativity': '🎨',
+            'Data Analysis': '📊',
+            'Development And Code': '💻',
+            'Education And Learning': '📚',
+            'Productivity': '⚡',
+            'Video And Audio': '🎥',
+            'Research': '🔬',
+            'Customer Service': '🎧',
+            'Writing': '📝',
+            'Image Generation': '🖼️',
+            'Social Media': '📱',
+            'SEO': '🔍',
+            'Human Resources': '👥',
+            'Finance': '💰',
+            'Healthcare': '🏥',
+            'Legal': '⚖️',
+            'E-commerce': '🛒',
+            'Gaming': '🎮',
+            'Music': '🎵',
+            'Translation': '🌐',
+            'Security': '🔒',
+            'Automation': '🔄',
+            'Chatbots': '🤖',
+            'Voice': '🎤',
+            'Other': '📦'
+        };
+
+        function translateCategory(category) {
+            return CATEGORY_TRANSLATIONS[category] || category;
+        }
+
+        function getCategoryIcon(category) {
+            return CATEGORY_ICONS[category] || '📌';
+        }
+
+        function parseCSV(csv) {
+            const lines = csv.trim().split('\n');
+            if (lines.length < 2) {
+                throw new Error('קובץ ה-CSV ריק או לא תקין');
+            }
+
+            const headers = lines[0].split(',');
+            const tools = lines.slice(1).map((line) => {
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+
+                for (let i = 0; i < line.length; i++) {
+                    const char = line[i];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                values.push(current.trim());
+
+                const obj = {};
+                headers.forEach((header, index) => {
+                    obj[header.trim()] = values[index] || '';
+                });
+                return obj;
+            }).filter(tool => tool.Name);
+
+            return tools;
+        }
+
+        function replaceReferral(url) {
+            if (!url) return url;
+            const baseUrl = url.split('?')[0];
+            return baseUrl + BDNHOST_REF;
+        }
+
+        // LocalStorage helpers
+        const storage = {
+            get: (key, defaultValue = null) => {
+                try {
+                    const item = localStorage.getItem(key);
+                    return item ? JSON.parse(item) : defaultValue;
+                } catch {
+                    return defaultValue;
+                }
+            },
+            set: (key, value) => {
+                try {
+                    localStorage.setItem(key, JSON.stringify(value));
+                } catch (e) {
+                    console.error('Storage error:', e);
+                }
+            }
+        };
+
+        function ToolCard({ tool, onFavoriteToggle, isFavorite, onCompareToggle, isCompared, onDetailsClick }) {
+            const websiteUrl = replaceReferral(tool.Website);
+            const categoryHebrew = translateCategory(tool.Category);
+            const categoryIcon = getCategoryIcon(tool.Category);
+
+            return (
+                <article className="tool-card rounded-2xl shadow-xl overflow-hidden animate-slide-in">
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10"></div>
+                        <img
+                            src={tool.Logo}
+                            alt={`לוגו ${tool.Name}`}
+                            className="w-full h-56 object-cover"
+                            loading="lazy"
+                            onError={(e) => {
+                                e.target.src = 'https://via.placeholder.com/400x300/667eea/ffffff?text=' + encodeURIComponent(tool.Name);
+                            }}
+                        />
+
+                        {/* Favorite Button */}
+                        <div
+                            className={`favorite-btn ${isFavorite ? 'active' : ''}`}
+                            onClick={() => onFavoriteToggle(tool.Name)}
+                            title={isFavorite ? 'הסר ממועדפים' : 'הוסף למועדפים'}
+                        >
+                            <span className="text-xl">{isFavorite ? '❤️' : '🤍'}</span>
+                        </div>
+
+                        {/* Compare Checkbox */}
+                        <div className="compare-checkbox">
+                            <input
+                                type="checkbox"
+                                checked={isCompared}
+                                onChange={() => onCompareToggle(tool)}
+                                className="w-6 h-6 cursor-pointer"
+                                title="הוסף להשוואה"
+                            />
+                        </div>
+
+                        {tool['Website Status'] === 'Active' && (
+                            <div className="absolute bottom-4 left-4">
+                                <span className="bg-green-500 text-white text-xs px-3 py-1.5 rounded-full font-bold flex items-center gap-1">
+                                    <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                                    פעיל
+                                </span>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="p-6">
+                        <div className="mb-3">
+                            <h3 className="text-2xl font-black text-primary mb-2">{tool.Name}</h3>
+                            {tool.Category && (
+                                <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs px-3 py-1.5 rounded-full font-bold">
+                                    {categoryIcon} {categoryHebrew}
+                                </span>
+                            )}
+                        </div>
+
+                        <p className="text-secondary mb-4 leading-relaxed text-sm line-clamp-3">
+                            {tool['Short Description']}
+                        </p>
+
+                        {tool['Primary Task'] && (
+                            <div className="mb-4">
+                                <div className="text-xs font-bold text-purple-600 mb-2">💡 משימה ראשית</div>
+                                <div className="text-sm text-secondary bg-tertiary p-3 rounded-xl border border-custom">
+                                    {tool['Primary Task']}
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="flex gap-2 mb-3">
+                            {tool.Website && (
+                                <a
+                                    href={websiteUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-xl hover:shadow-xl transition-all text-center font-bold text-sm"
+                                >
+                                    🌐 אתר
+                                </a>
+                            )}
+                            <button
+                                onClick={() => onDetailsClick(tool)}
+                                className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-3 rounded-xl hover:shadow-xl transition-all text-center font-bold text-sm"
+                            >
+                                ℹ️ פרטים
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            );
+        }
+
+        function SkeletonCard() {
+            return (
+                <div className="skeleton h-96 rounded-2xl"></div>
+            );
+        }
+
+        function LoadingState() {
+            return (
+                <div className="container mx-auto px-4 py-20">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {[...Array(6)].map((_, i) => <SkeletonCard key={i} />)}
+                    </div>
+                </div>
+            );
+        }
+
+        function Dashboard() {
+            const [searchTerm, setSearchTerm] = useState('');
+            const [selectedCategory, setSelectedCategory] = useState('all');
+            const [selectedYearRange, setSelectedYearRange] = useState('all');
+            const [selectedCountries, setSelectedCountries] = useState([]);
+            const [sortBy, setSortBy] = useState('name');
+            const [viewMode, setViewMode] = useState('cards');
+            const [tools, setTools] = useState([]);
+            const [isLoading, setIsLoading] = useState(true);
+            const [error, setError] = useState(null);
+            const [currentPage, setCurrentPage] = useState(1);
+            const [favorites, setFavorites] = useState([]);
+            const [compareList, setCompareList] = useState([]);
+            const [selectedTool, setSelectedTool] = useState(null);
+            const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+            const [theme, setTheme] = useState('light');
+
+            // Load favorites and theme from localStorage
+            useEffect(() => {
+                const savedFavorites = storage.get('favorites', []);
+                const savedTheme = storage.get('theme', 'light');
+                setFavorites(savedFavorites);
+                setTheme(savedTheme);
+                document.body.className = `${savedTheme}-mode min-h-screen`;
+            }, []);
+
+            useEffect(() => {
+                loadData();
+            }, []);
+
+            const loadData = async () => {
+                setIsLoading(true);
+                setError(null);
+
+                for (const csvPath of CSV_PATHS) {
+                    try {
+                        const response = await fetch(csvPath);
+                        if (!response.ok) continue;
+
+                        const csvText = await response.text();
+                        if (!csvText || csvText.length < 100) continue;
+
+                        const parsedTools = parseCSV(csvText);
+                        if (parsedTools.length === 0) continue;
+
+                        setTools(parsedTools);
+                        setIsLoading(false);
+                        return;
+
+                    } catch (err) {
+                        continue;
+                    }
+                }
+
+                setError('לא ניתן למצוא את קובץ הנתונים.');
+                setIsLoading(false);
+            };
+
+            // Theme Toggle
+            const toggleTheme = () => {
+                const newTheme = theme === 'light' ? 'dark' : 'light';
+                setTheme(newTheme);
+                storage.set('theme', newTheme);
+                document.body.className = `${newTheme}-mode min-h-screen`;
+            };
+
+            // Favorites
+            const toggleFavorite = (toolName) => {
+                const newFavorites = favorites.includes(toolName)
+                    ? favorites.filter(f => f !== toolName)
+                    : [...favorites, toolName];
+                setFavorites(newFavorites);
+                storage.set('favorites', newFavorites);
+            };
+
+            // Compare
+            const toggleCompare = (tool) => {
+                if (compareList.find(t => t.Name === tool.Name)) {
+                    setCompareList(compareList.filter(t => t.Name !== tool.Name));
+                } else if (compareList.length < MAX_COMPARE) {
+                    setCompareList([...compareList, tool]);
+                } else {
+                    alert(`ניתן להשוות עד ${MAX_COMPARE} כלים בלבד`);
+                }
+            };
+
+            const categories = useMemo(() => {
+                const cats = new Set(tools.map(t => t.Category).filter(c => c));
+                return ['all', ...Array.from(cats)];
+            }, [tools]);
+
+            const countries = useMemo(() => {
+                const ctrs = new Set(tools.map(t => t.Country).filter(c => c));
+                return Array.from(ctrs).sort();
+            }, [tools]);
+
+            const yearRanges = [
+                { value: 'all', label: 'כל השנים' },
+                { value: '2024-2025', label: '2024-2025' },
+                { value: '2022-2023', label: '2022-2023' },
+                { value: '2020-2021', label: '2020-2021' },
+                { value: 'before-2020', label: 'לפני 2020' }
+            ];
+
+            const filteredTools = useMemo(() => {
+                let filtered = tools.filter(tool => {
+                    const matchesSearch = tool.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                        (tool['Short Description'] || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                        (tool.Keywords || '').toLowerCase().includes(searchTerm.toLowerCase());
+                    const matchesCategory = selectedCategory === 'all' || tool.Category === selectedCategory;
+                    const matchesFavorites = !showFavoritesOnly || favorites.includes(tool.Name);
+
+                    let matchesYear = true;
+                    if (selectedYearRange !== 'all' && tool['Year Founded']) {
+                        const year = parseInt(tool['Year Founded']);
+                        if (selectedYearRange === '2024-2025') matchesYear = year >= 2024;
+                        else if (selectedYearRange === '2022-2023') matchesYear = year >= 2022 && year <= 2023;
+                        else if (selectedYearRange === '2020-2021') matchesYear = year >= 2020 && year <= 2021;
+                        else if (selectedYearRange === 'before-2020') matchesYear = year < 2020;
+                    }
+
+                    const matchesCountry = selectedCountries.length === 0 ||
+                                          selectedCountries.includes(tool.Country);
+
+                    return matchesSearch && matchesCategory && matchesFavorites && matchesYear && matchesCountry;
+                });
+
+                // Sorting
+                if (sortBy === 'name') {
+                    filtered.sort((a, b) => a.Name.localeCompare(b.Name, 'he'));
+                } else if (sortBy === 'year') {
+                    filtered.sort((a, b) => (parseInt(b['Year Founded']) || 0) - (parseInt(a['Year Founded']) || 0));
+                } else if (sortBy === 'category') {
+                    filtered.sort((a, b) => (a.Category || '').localeCompare(b.Category || '', 'he'));
+                }
+
+                return filtered;
+            }, [tools, searchTerm, selectedCategory, showFavoritesOnly, selectedYearRange, selectedCountries, sortBy, favorites]);
+
+            useEffect(() => {
+                setCurrentPage(1);
+            }, [searchTerm, selectedCategory, showFavoritesOnly, selectedYearRange, selectedCountries]);
+
+            const totalPages = Math.ceil(filteredTools.length / ITEMS_PER_PAGE);
+            const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+            const endIndex = startIndex + ITEMS_PER_PAGE;
+            const currentTools = filteredTools.slice(startIndex, endIndex);
+
+            const stats = useMemo(() => {
+                if (tools.length === 0) return {};
+                return {
+                    total: tools.length,
+                    active: tools.filter(t => t['Website Status'] === 'Active').length,
+                    categories: new Set(tools.map(t => t.Category).filter(c => c)).size,
+                    countries: new Set(tools.map(t => t.Country).filter(c => c)).size,
+                    favorites: favorites.length
+                };
+            }, [tools, favorites]);
+
+            useEffect(() => {
+                if (currentPage > 1) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }, [currentPage]);
+
+            // Setup event listeners for theme toggle and sidebar
+            useEffect(() => {
+                const themeToggle = document.getElementById('themeToggle');
+                const sidebarToggle = document.getElementById('sidebarToggle');
+                const closeSidebar = document.getElementById('closeSidebar');
+                const sidebar = document.getElementById('sidebar');
+                const compareBar = document.getElementById('compareBar');
+                const compareBtn = document.getElementById('compareBtn');
+                const clearCompare = document.getElementById('clearCompare');
+
+                themeToggle.onclick = toggleTheme;
+
+                sidebarToggle.onclick = () => {
+                    sidebar.classList.add('active');
+                    renderSidebarCharts();
+                };
+                closeSidebar.onclick = () => sidebar.classList.remove('active');
+
+                if (compareList.length > 0) {
+                    compareBar.classList.add('active');
+                } else {
+                    compareBar.classList.remove('active');
+                }
+
+                compareBtn.onclick = () => {
+                    if (compareList.length >= 2) {
+                        showCompareModal();
+                    } else {
+                        alert('בחר לפחות 2 כלים להשוואה');
+                    }
+                };
+
+                clearCompare.onclick = () => setCompareList([]);
+
+                // Update compare list display
+                const compareListEl = document.getElementById('compareList');
+                compareListEl.innerHTML = compareList.map(tool =>
+                    `<span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-bold">${tool.Name}</span>`
+                ).join('');
+
+                // Update theme icon
+                document.getElementById('themeIcon').textContent = theme === 'light' ? '🌙' : '☀️';
+            }, [theme, compareList]);
+
+            // Render Charts in Sidebar
+            const renderSidebarCharts = () => {
+                const sidebarContent = document.getElementById('sidebarContent');
+
+                // Category Distribution
+                const categoryCounts = {};
+                tools.forEach(tool => {
+                    const cat = tool.Category || 'אחר';
+                    categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+                });
+
+                // Year Distribution
+                const yearCounts = {};
+                tools.forEach(tool => {
+                    const year = tool['Year Founded'] || 'לא ידוע';
+                    yearCounts[year] = (yearCounts[year] || 0) + 1;
+                });
+
+                // Country Distribution
+                const countryCounts = {};
+                tools.forEach(tool => {
+                    const country = tool.Country || 'לא ידוע';
+                    countryCounts[country] = (countryCounts[country] || 0) + 1;
+                });
+
+                sidebarContent.innerHTML = `
+                    <div class="space-y-6">
+                        <div class="bg-tertiary p-4 rounded-xl border border-custom">
+                            <h3 class="font-bold text-lg mb-3 text-primary">📊 התפלגות קטגוריות</h3>
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+
+                        <div class="bg-tertiary p-4 rounded-xl border border-custom">
+                            <h3 class="font-bold text-lg mb-3 text-primary">📅 התפלגות שנים</h3>
+                            <canvas id="yearChart"></canvas>
+                        </div>
+
+                        <div class="bg-tertiary p-4 rounded-xl border border-custom">
+                            <h3 class="font-bold text-lg mb-3 text-primary">🌍 מדינות מובילות</h3>
+                            <canvas id="countryChart"></canvas>
+                        </div>
+
+                        <div class="bg-tertiary p-4 rounded-xl border border-custom">
+                            <h3 class="font-bold text-lg mb-3 text-primary">💾 ייצוא נתונים</h3>
+                            <div class="space-y-2">
+                                <button onclick="exportToJSON()" class="w-full export-btn text-white px-4 py-3 rounded-xl font-bold">
+                                    📄 ייצא ל-JSON
+                                </button>
+                                <button onclick="exportToCSV()" class="w-full export-btn text-white px-4 py-3 rounded-xl font-bold">
+                                    📊 ייצא ל-CSV
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-tertiary p-4 rounded-xl border border-custom">
+                            <h3 class="font-bold text-lg mb-3 text-primary">🔗 שתף</h3>
+                            <div class="space-y-2">
+                                <button onclick="shareTwitter()" class="w-full bg-blue-500 text-white px-4 py-3 rounded-xl font-bold hover:bg-blue-600">
+                                    🐦 Twitter
+                                </button>
+                                <button onclick="shareFacebook()" class="w-full bg-blue-700 text-white px-4 py-3 rounded-xl font-bold hover:bg-blue-800">
+                                    📘 Facebook
+                                </button>
+                                <button onclick="shareLinkedIn()" class="w-full bg-blue-600 text-white px-4 py-3 rounded-xl font-bold hover:bg-blue-700">
+                                    💼 LinkedIn
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                setTimeout(() => {
+                    // Category Chart
+                    const catCtx = document.getElementById('categoryChart');
+                    if (catCtx && window.Chart) {
+                        new Chart(catCtx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: Object.keys(categoryCounts).slice(0, 8).map(translateCategory),
+                                datasets: [{
+                                    data: Object.values(categoryCounts).slice(0, 8),
+                                    backgroundColor: [
+                                        '#667eea', '#764ba2', '#f093fb', '#f5576c',
+                                        '#4facfe', '#00f2fe', '#43e97b', '#38f9d7'
+                                    ]
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    legend: { position: 'bottom' }
+                                }
+                            }
+                        });
+                    }
+
+                    // Year Chart
+                    const yearCtx = document.getElementById('yearChart');
+                    if (yearCtx && window.Chart) {
+                        const sortedYears = Object.entries(yearCounts)
+                            .filter(([year]) => year !== 'לא ידוע')
+                            .sort(([a], [b]) => b - a)
+                            .slice(0, 10);
+
+                        new Chart(yearCtx, {
+                            type: 'bar',
+                            data: {
+                                labels: sortedYears.map(([year]) => year),
+                                datasets: [{
+                                    label: 'מספר כלים',
+                                    data: sortedYears.map(([, count]) => count),
+                                    backgroundColor: '#667eea'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    legend: { display: false }
+                                }
+                            }
+                        });
+                    }
+
+                    // Country Chart
+                    const countryCtx = document.getElementById('countryChart');
+                    if (countryCtx && window.Chart) {
+                        const sortedCountries = Object.entries(countryCounts)
+                            .filter(([country]) => country !== 'לא ידוע')
+                            .sort(([, a], [, b]) => b - a)
+                            .slice(0, 10);
+
+                        new Chart(countryCtx, {
+                            type: 'bar',
+                            data: {
+                                labels: sortedCountries.map(([country]) => country),
+                                datasets: [{
+                                    label: 'מספר כלים',
+                                    data: sortedCountries.map(([, count]) => count),
+                                    backgroundColor: '#f093fb'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                indexAxis: 'y',
+                                plugins: {
+                                    legend: { display: false }
+                                }
+                            }
+                        });
+                    }
+                }, 100);
+            };
+
+            // Export Functions
+            window.exportToJSON = () => {
+                const dataStr = JSON.stringify(filteredTools, null, 2);
+                const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'ai-tools-export.json';
+                link.click();
+            };
+
+            window.exportToCSV = () => {
+                const headers = ['Name', 'Category', 'Short Description', 'Year Founded', 'Country', 'Website'];
+                const rows = filteredTools.map(tool => [
+                    tool.Name,
+                    tool.Category,
+                    tool['Short Description'],
+                    tool['Year Founded'],
+                    tool.Country,
+                    tool.Website
+                ]);
+
+                const csvContent = [
+                    headers.join(','),
+                    ...rows.map(row => row.map(cell => `"${(cell || '').replace(/"/g, '""')}"`).join(','))
+                ].join('\n');
+
+                const dataBlob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'ai-tools-export.csv';
+                link.click();
+            };
+
+            // Share Functions
+            window.shareTwitter = () => {
+                const text = `גיליתי ${tools.length} כלי בינה מלאכותית בדשבורד המתקדם של BDNHOST!`;
+                const url = window.location.href;
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+            };
+
+            window.shareFacebook = () => {
+                const url = window.location.href;
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+            };
+
+            window.shareLinkedIn = () => {
+                const url = window.location.href;
+                window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+            };
+
+            const showCompareModal = () => {
+                // Create comparison modal
+                const modal = document.createElement('div');
+                modal.className = 'modal active';
+                modal.innerHTML = `
+                    <div class="modal-content p-8 max-w-6xl w-full">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-3xl font-black gradient-text">השוואת כלים</h2>
+                            <button class="text-4xl hover:scale-110 transition-transform" onclick="this.closest('.modal').remove()">×</button>
+                        </div>
+                        <div class="grid grid-cols-${Math.min(compareList.length, 4)} gap-4">
+                            ${compareList.map(tool => `
+                                <div class="bg-tertiary p-4 rounded-xl border border-custom">
+                                    <img src="${tool.Logo}" alt="${tool.Name}" class="w-full h-32 object-cover rounded-lg mb-3" />
+                                    <h3 class="font-black text-lg mb-2">${tool.Name}</h3>
+                                    <div class="space-y-2 text-sm">
+                                        <div><strong>קטגוריה:</strong> ${translateCategory(tool.Category)}</div>
+                                        <div><strong>שנה:</strong> ${tool['Year Founded'] || 'לא ידוע'}</div>
+                                        <div><strong>מדינה:</strong> ${tool.Country || 'לא ידוע'}</div>
+                                        <div><strong>תיאור:</strong> ${tool['Short Description']}</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            };
+
+            if (isLoading) {
+                return <LoadingState />;
+            }
+
+            if (error) {
+                return (
+                    <div className="container mx-auto px-4 py-16">
+                        <div className="max-w-2xl mx-auto bg-secondary rounded-2xl shadow-2xl p-10 text-center">
+                            <div className="text-7xl mb-4">⚠️</div>
+                            <h2 className="text-3xl font-black text-primary mb-3">שגיאה</h2>
+                            <p className="text-secondary mb-8">{error}</p>
+                            <button onClick={loadData} className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-bold">
+                                נסה שוב
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="min-h-screen pb-20">
+                    {/* Hero Header */}
+                    <header className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-16 px-4 mb-10 shadow-2xl">
+                        <div className="container mx-auto text-center">
+                            <h1 className="text-5xl md:text-6xl font-black mb-4">
+                                🤖 דשבורד AI מתקדם
+                            </h1>
+                            <p className="text-xl md:text-2xl mb-3 font-medium opacity-95">
+                                מערכת מתקדמת לניהול וחיפוש כלי בינה מלאכותית
+                            </p>
+                            <p className="text-lg opacity-90">
+                                מועדפים • השוואה • גרפים • מצב לילה • ועוד...
+                            </p>
+                        </div>
+                    </header>
+
+                    <div className="container mx-auto px-4">
+                        {/* Stats */}
+                        <section className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+                            <div className="stat-card rounded-2xl shadow-xl p-6 text-center">
+                                <div className="text-5xl font-black gradient-text mb-2">{stats.total}</div>
+                                <div className="text-sm font-bold text-secondary">כלי AI</div>
+                            </div>
+                            <div className="stat-card rounded-2xl shadow-xl p-6 text-center">
+                                <div className="text-5xl font-black text-green-600 mb-2">{stats.active}</div>
+                                <div className="text-sm font-bold text-secondary">פעילים</div>
+                            </div>
+                            <div className="stat-card rounded-2xl shadow-xl p-6 text-center">
+                                <div className="text-5xl font-black text-pink-600 mb-2">{stats.categories}</div>
+                                <div className="text-sm font-bold text-secondary">קטגוריות</div>
+                            </div>
+                            <div className="stat-card rounded-2xl shadow-xl p-6 text-center">
+                                <div className="text-5xl font-black text-orange-600 mb-2">{stats.countries}</div>
+                                <div className="text-sm font-bold text-secondary">מדינות</div>
+                            </div>
+                            <div className="stat-card rounded-2xl shadow-xl p-6 text-center cursor-pointer hover:scale-105 transition-transform" onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}>
+                                <div className="text-5xl font-black text-red-600 mb-2">{stats.favorites}</div>
+                                <div className="text-sm font-bold text-secondary">מועדפים ❤️</div>
+                            </div>
+                        </section>
+
+                        {/* Filters */}
+                        <section className="bg-secondary rounded-2xl shadow-2xl p-6 mb-10 border-2 border-custom">
+                            <div className="grid md:grid-cols-4 gap-4 mb-4">
+                                <div className="md:col-span-2">
+                                    <label className="block text-sm font-black text-primary mb-2">🔍 חיפוש</label>
+                                    <input
+                                        type="search"
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                        placeholder="חפש כלי AI..."
+                                        className="w-full px-4 py-3 border-2 border-custom rounded-xl bg-tertiary text-primary focus:border-purple-500 focus:outline-none"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-black text-primary mb-2">📂 קטגוריה</label>
+                                    <select
+                                        value={selectedCategory}
+                                        onChange={(e) => setSelectedCategory(e.target.value)}
+                                        className="w-full px-4 py-3 border-2 border-custom rounded-xl bg-tertiary text-primary focus:border-purple-500 focus:outline-none font-bold"
+                                    >
+                                        <option value="all">כל הקטגוריות</option>
+                                        {categories.filter(cat => cat !== 'all').map(cat => (
+                                            <option key={cat} value={cat}>
+                                                {getCategoryIcon(cat)} {translateCategory(cat)}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-black text-primary mb-2">📅 שנה</label>
+                                    <select
+                                        value={selectedYearRange}
+                                        onChange={(e) => setSelectedYearRange(e.target.value)}
+                                        className="w-full px-4 py-3 border-2 border-custom rounded-xl bg-tertiary text-primary focus:border-purple-500 focus:outline-none font-bold"
+                                    >
+                                        {yearRanges.map(range => (
+                                            <option key={range.value} value={range.value}>{range.label}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-3">
+                                    <span className="font-bold text-primary">🔢 מיון:</span>
+                                    <select
+                                        value={sortBy}
+                                        onChange={(e) => setSortBy(e.target.value)}
+                                        className="px-4 py-2 border-2 border-custom rounded-xl bg-tertiary text-primary font-bold focus:border-purple-500 focus:outline-none"
+                                    >
+                                        <option value="name">שם</option>
+                                        <option value="year">שנה</option>
+                                        <option value="category">קטגוריה</option>
+                                    </select>
+                                </div>
+
+                                <div className="text-sm font-bold text-primary bg-tertiary px-4 py-2 rounded-xl border border-custom">
+                                    מציג {startIndex + 1}-{Math.min(endIndex, filteredTools.length)} מתוך {filteredTools.length}
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Tools Grid */}
+                        <main>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                                {currentTools.map((tool, idx) => (
+                                    <ToolCard
+                                        key={idx}
+                                        tool={tool}
+                                        isFavorite={favorites.includes(tool.Name)}
+                                        onFavoriteToggle={toggleFavorite}
+                                        isCompared={compareList.some(t => t.Name === tool.Name)}
+                                        onCompareToggle={toggleCompare}
+                                        onDetailsClick={setSelectedTool}
+                                    />
+                                ))}
+                            </div>
+
+                            {/* Pagination */}
+                            {totalPages > 1 && (
+                                <div className="flex justify-center gap-2">
+                                    <button
+                                        onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                                        disabled={currentPage === 1}
+                                        className="px-6 py-3 bg-secondary border-2 border-custom rounded-xl font-bold text-primary hover:bg-tertiary disabled:opacity-40 transition-all"
+                                    >
+                                        ← הקודם
+                                    </button>
+                                    <span className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-black">
+                                        {currentPage} / {totalPages}
+                                    </span>
+                                    <button
+                                        onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                                        disabled={currentPage === totalPages}
+                                        className="px-6 py-3 bg-secondary border-2 border-custom rounded-xl font-bold text-primary hover:bg-tertiary disabled:opacity-40 transition-all"
+                                    >
+                                        הבא →
+                                    </button>
+                                </div>
+                            )}
+                        </main>
+
+                        {/* Footer */}
+                        <footer className="mt-16 text-center">
+                            <div className="bg-secondary rounded-2xl shadow-xl p-8 border-2 border-custom">
+                                <p className="text-lg font-bold text-primary mb-2">
+                                    🚀 <span className="gradient-text font-black text-xl">BDNHOST</span> - דשבורד AI מתקדם
+                                </p>
+                                <p className="text-sm text-secondary">
+                                    עם מצב לילה, מועדפים, השוואה וגרפים • {new Date().toLocaleDateString('he-IL')}
+                                </p>
+                            </div>
+                        </footer>
+                    </div>
+
+                    {/* Tool Details Modal */}
+                    {selectedTool && (
+                        <div className="modal active" onClick={() => setSelectedTool(null)}>
+                            <div className="modal-content p-8 max-w-4xl" onClick={(e) => e.stopPropagation()}>
+                                <div className="flex justify-between items-center mb-6">
+                                    <h2 className="text-3xl font-black gradient-text">{selectedTool.Name}</h2>
+                                    <button className="text-4xl hover:scale-110 transition-transform" onClick={() => setSelectedTool(null)}>×</button>
+                                </div>
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    <img src={selectedTool.Logo} alt={selectedTool.Name} className="w-full rounded-xl" />
+                                    <div className="space-y-4">
+                                        <div>
+                                            <strong className="text-primary">תיאור:</strong>
+                                            <p className="text-secondary mt-1">{selectedTool['Short Description']}</p>
+                                        </div>
+                                        <div>
+                                            <strong className="text-primary">קטגוריה:</strong>
+                                            <p className="text-secondary mt-1">{translateCategory(selectedTool.Category)}</p>
+                                        </div>
+                                        <div>
+                                            <strong className="text-primary">משימה ראשית:</strong>
+                                            <p className="text-secondary mt-1">{selectedTool['Primary Task']}</p>
+                                        </div>
+                                        {selectedTool['Year Founded'] && (
+                                            <div>
+                                                <strong className="text-primary">שנת ייסוד:</strong>
+                                                <p className="text-secondary mt-1">{selectedTool['Year Founded']}</p>
+                                            </div>
+                                        )}
+                                        {selectedTool.Country && (
+                                            <div>
+                                                <strong className="text-primary">מדינה:</strong>
+                                                <p className="text-secondary mt-1">{selectedTool.Country}</p>
+                                            </div>
+                                        )}
+                                        {selectedTool.Website && (
+                                            <a href={replaceReferral(selectedTool.Website)} target="_blank" rel="noopener noreferrer" className="block w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl text-center font-bold hover:shadow-xl transition-all">
+                                                🌐 בקר באתר
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Dashboard />, document.getElementById('root'));
+    </script>
+</body>
+</html>

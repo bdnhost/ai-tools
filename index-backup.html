@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>כלי בינה מלאכותית | דשבורד מקיף של כלי AI מובילים 2025 | BDNHOST</title>
+    <meta name="description" content="גלה את כלי הבינה המלאכותית המובילים לשנת 2025. דשבורד מקיף עם מעל 1000 כלי AI למשימות שונות: ChatGPT, Claude, Google Gemini ועוד. מידע מפורט, השוואות וקישורים ישירים.">
+    <meta name="keywords" content="בינה מלאכותית, כלי AI, ChatGPT, Claude, Google Gemini, כלי AI בעברית, בינה מלאכותית 2025, AI tools, דשבורד AI, BDNHOST">
+    <meta name="robots" content="index, follow">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .tool-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .tool-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .status-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3);
+        }
+        
+        .category-badge {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
+        }
+        
+        .stat-card {
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #667eea;
+        }
+        
+        .pagination-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .pagination-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pagination-btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+        
+        .pagination-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        
+        .loading-spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .7; }
+        }
+        
+        .keyword-tag {
+            transition: all 0.2s ease;
+        }
+        
+        .keyword-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.3);
+        }
+        
+        .filter-section {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        @media (max-width: 768px) {
+            .tool-card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useMemo, useEffect } = React;
+
+        const ITEMS_PER_PAGE = 8;
+        const BDNHOST_REF = '?ref=bdnhost.net';
+        
+        const CSV_PATHS = [
+            './AIToolBuzz.csv',
+            'AIToolBuzz.csv',
+            '../AIToolBuzz.csv',
+            '/AIToolBuzz.csv'
+        ];
+
+        // תרגום קטגוריות לעברית
+        const CATEGORY_TRANSLATIONS = {
+            'Communication And Support': 'תקשורת ותמיכה',
+            'Operations And Management': 'ניהול ותפעול',
+            'Ai And Machine Learning': 'בינה מלאכותית ולמידת מכונה',
+            'Content Creation': 'יצירת תוכן',
+            'Marketing And Sales': 'שיווק ומכירות',
+            'Design And Creativity': 'עיצוב ויצירתיות',
+            'Data Analysis': 'ניתוח נתונים',
+            'Development And Code': 'פיתוח וקוד',
+            'Education And Learning': 'חינוך ולמידה',
+            'Productivity': 'פרודוקטיביות',
+            'Video And Audio': 'וידאו ואודיו',
+            'Research': 'מחקר',
+            'Customer Service': 'שירות לקוחות',
+            'Writing': 'כתיבה',
+            'Image Generation': 'יצירת תמונות',
+            'Social Media': 'רשתות חברתיות',
+            'SEO': 'קידום אתרים',
+            'Human Resources': 'משאבי אנוש',
+            'Finance': 'פיננסים',
+            'Healthcare': 'בריאות',
+            'Legal': 'משפט',
+            'E-commerce': 'מסחר אלקטרוני',
+            'Gaming': 'משחקים',
+            'Music': 'מוזיקה',
+            'Translation': 'תרגום',
+            'Security': 'אבטחה',
+            'Automation': 'אוטומציה',
+            'Chatbots': 'צ\'אטבוטים',
+            'Voice': 'קול',
+            'Text To Speech': 'טקסט לדיבור',
+            'Speech To Text': 'דיבור לטקסט',
+            'Other': 'אחר'
+        };
+
+        function translateCategory(category) {
+            return CATEGORY_TRANSLATIONS[category] || category;
+        }
+
+        // אייקונים לקטגוריות
+        const CATEGORY_ICONS = {
+            'Communication And Support': '💬',
+            'Operations And Management': '⚙️',
+            'Ai And Machine Learning': '🤖',
+            'Content Creation': '✍️',
+            'Marketing And Sales': '📈',
+            'Design And Creativity': '🎨',
+            'Data Analysis': '📊',
+            'Development And Code': '💻',
+            'Education And Learning': '📚',
+            'Productivity': '⚡',
+            'Video And Audio': '🎥',
+            'Research': '🔬',
+            'Customer Service': '🎧',
+            'Writing': '📝',
+            'Image Generation': '🖼️',
+            'Social Media': '📱',
+            'SEO': '🔍',
+            'Human Resources': '👥',
+            'Finance': '💰',
+            'Healthcare': '🏥',
+            'Legal': '⚖️',
+            'E-commerce': '🛒',
+            'Gaming': '🎮',
+            'Music': '🎵',
+            'Translation': '🌐',
+            'Security': '🔒',
+            'Automation': '🔄',
+            'Chatbots': '🤖',
+            'Voice': '🎤',
+            'Other': '📦'
+        };
+
+        function getCategoryIcon(category) {
+            return CATEGORY_ICONS[category] || '📌';
+        }
+
+        function parseCSV(csv) {
+            const lines = csv.trim().split('\n');
+            if (lines.length < 2) {
+                throw new Error('קובץ ה-CSV ריק או לא תקין');
+            }
+            
+            const headers = lines[0].split(',');
+            
+            const tools = lines.slice(1).map((line, index) => {
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+                
+                for (let i = 0; i < line.length; i++) {
+                    const char = line[i];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                values.push(current.trim());
+                
+                const obj = {};
+                headers.forEach((header, index) => {
+                    obj[header.trim()] = values[index] || '';
+                });
+                return obj;
+            }).filter(tool => tool.Name);
+            
+            return tools;
+        }
+
+        function replaceReferral(url) {
+            if (!url) return url;
+            const baseUrl = url.split('?')[0];
+            return baseUrl + BDNHOST_REF;
+        }
+
+        function ToolCard({ tool }) {
+            const websiteUrl = replaceReferral(tool.Website);
+            const infoUrl = replaceReferral(tool.Link);
+            const categoryHebrew = translateCategory(tool.Category);
+            const categoryIcon = getCategoryIcon(tool.Category);
+
+            return (
+                <article className="tool-card bg-white rounded-2xl shadow-xl overflow-hidden border border-purple-100">
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10"></div>
+                        <img 
+                            src={tool.Logo} 
+                            alt={`לוגו ${tool.Name}`}
+                            className="w-full h-56 object-cover"
+                            loading="lazy"
+                            onError={(e) => {
+                                e.target.src = 'https://via.placeholder.com/400x300/667eea/ffffff?text=' + encodeURIComponent(tool.Name);
+                            }}
+                        />
+                        {tool['Website Status'] === 'Active' && (
+                            <div className="absolute top-4 left-4">
+                                <span className="status-badge text-white text-xs px-3 py-1.5 rounded-full font-semibold flex items-center gap-1">
+                                    <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                                    פעיל
+                                </span>
+                            </div>
+                        )}
+                        {tool['Year Founded'] && (
+                            <div className="absolute top-4 right-4">
+                                <span className="bg-white/90 backdrop-blur-sm text-purple-700 text-xs px-3 py-1.5 rounded-full font-bold">
+                                    {tool['Year Founded']}
+                                </span>
+                            </div>
+                        )}
+                    </div>
+                    
+                    <div className="p-6">
+                        <div className="mb-3">
+                            <h3 className="text-2xl font-extrabold text-gray-900 mb-2">{tool.Name}</h3>
+                            {tool.Category && (
+                                <div className="inline-flex items-center gap-1.5">
+                                    <span className="category-badge text-white text-xs px-3 py-1.5 rounded-full font-semibold">
+                                        {categoryIcon} {categoryHebrew}
+                                    </span>
+                                </div>
+                            )}
+                        </div>
+                        
+                        <p className="text-gray-600 mb-4 leading-relaxed text-sm line-clamp-3">
+                            {tool['Short Description']}
+                        </p>
+                        
+                        {tool['Primary Task'] && (
+                            <div className="mb-4">
+                                <div className="text-xs font-bold text-purple-700 mb-2">💡 משימה ראשית</div>
+                                <div className="text-sm text-gray-700 bg-gradient-to-r from-purple-50 to-pink-50 p-3 rounded-xl border border-purple-100">
+                                    {tool['Primary Task']}
+                                </div>
+                            </div>
+                        )}
+                        
+                        {tool.Keywords && (
+                            <div className="mb-4">
+                                <div className="text-xs font-bold text-purple-700 mb-2">🏷️ תגיות</div>
+                                <div className="flex flex-wrap gap-2">
+                                    {tool.Keywords.split(',').slice(0, 4).map((keyword, idx) => (
+                                        <span key={idx} className="keyword-tag text-xs bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 px-3 py-1 rounded-full font-medium">
+                                            {keyword.trim()}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                        
+                        <div className="grid grid-cols-2 gap-3 mb-4 text-xs">
+                            {tool.Country && (
+                                <div className="bg-gray-50 rounded-lg p-2">
+                                    <span className="text-gray-500">🌍 מדינה:</span>
+                                    <div className="font-bold text-gray-800 mt-0.5">{tool.Country}</div>
+                                </div>
+                            )}
+                            {tool.industry && (
+                                <div className="bg-gray-50 rounded-lg p-2">
+                                    <span className="text-gray-500">🏢 תעשייה:</span>
+                                    <div className="font-bold text-gray-800 mt-0.5">{tool.industry}</div>
+                                </div>
+                            )}
+                        </div>
+                        
+                        <div className="flex gap-2">
+                            {tool.Website && (
+                                <a 
+                                    href={websiteUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all text-center font-bold text-sm shadow-lg hover:shadow-xl"
+                                >
+                                    🌐 אתר רשמי
+                                </a>
+                            )}
+                            {tool.Link && (
+                                <a 
+                                    href={infoUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-3 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all text-center font-bold text-sm shadow-lg hover:shadow-xl"
+                                >
+                                    ℹ️ פרטים
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </article>
+            );
+        }
+
+        function Pagination({ currentPage, totalPages, onPageChange }) {
+            if (totalPages <= 1) return null;
+            
+            const pages = [];
+            const maxPagesToShow = 7;
+            
+            let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+            let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+            
+            if (endPage - startPage < maxPagesToShow - 1) {
+                startPage = Math.max(1, endPage - maxPagesToShow + 1);
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                pages.push(i);
+            }
+            
+            return (
+                <nav className="flex items-center justify-center gap-2 mt-10">
+                    <button
+                        onClick={() => onPageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="pagination-btn px-5 py-3 bg-white rounded-xl shadow-lg font-bold text-purple-700 hover:bg-purple-50 disabled:opacity-40 border-2 border-purple-100"
+                    >
+                        ← הקודם
+                    </button>
+                    
+                    {startPage > 1 && (
+                        <>
+                            <button
+                                onClick={() => onPageChange(1)}
+                                className="pagination-btn px-4 py-3 bg-white rounded-xl shadow-lg font-bold text-purple-700 hover:bg-purple-50 border-2 border-purple-100"
+                            >
+                                1
+                            </button>
+                            {startPage > 2 && <span className="text-purple-400 font-bold">...</span>}
+                        </>
+                    )}
+                    
+                    {pages.map(page => (
+                        <button
+                            key={page}
+                            onClick={() => onPageChange(page)}
+                            className={`pagination-btn px-4 py-3 rounded-xl shadow-lg font-bold transition-all ${
+                                currentPage === page
+                                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white scale-110 border-2 border-purple-400'
+                                    : 'bg-white text-purple-700 hover:bg-purple-50 border-2 border-purple-100'
+                            }`}
+                        >
+                            {page}
+                        </button>
+                    ))}
+                    
+                    {endPage < totalPages && (
+                        <>
+                            {endPage < totalPages - 1 && <span className="text-purple-400 font-bold">...</span>}
+                            <button
+                                onClick={() => onPageChange(totalPages)}
+                                className="pagination-btn px-4 py-3 bg-white rounded-xl shadow-lg font-bold text-purple-700 hover:bg-purple-50 border-2 border-purple-100"
+                            >
+                                {totalPages}
+                            </button>
+                        </>
+                    )}
+                    
+                    <button
+                        onClick={() => onPageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                        className="pagination-btn px-5 py-3 bg-white rounded-xl shadow-lg font-bold text-purple-700 hover:bg-purple-50 disabled:opacity-40 border-2 border-purple-100"
+                    >
+                        הבא →
+                    </button>
+                </nav>
+            );
+        }
+
+        function LoadingState() {
+            return (
+                <div className="container mx-auto px-4 py-20 text-center">
+                    <div className="loading-spinner mx-auto mb-6"></div>
+                    <h2 className="text-3xl font-extrabold text-purple-900 mb-3">טוען נתונים...</h2>
+                    <p className="text-gray-600 text-lg">אנחנו מביאים עבורך את כלי ה-AI המובילים 🚀</p>
+                </div>
+            );
+        }
+
+        function ErrorState({ error, onRetry }) {
+            return (
+                <div className="container mx-auto px-4 py-16">
+                    <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl p-10">
+                        <div className="text-center mb-6">
+                            <div className="text-7xl mb-4">⚠️</div>
+                            <h2 className="text-3xl font-extrabold text-gray-800 mb-3">אופס! משהו השתבש</h2>
+                            <p className="text-gray-600 mb-8 text-lg">{error}</p>
+                            <button
+                                onClick={onRetry}
+                                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-bold text-lg shadow-xl hover:shadow-2xl"
+                            >
+                                🔄 נסה שוב
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        function Dashboard() {
+            const [searchTerm, setSearchTerm] = useState('');
+            const [selectedCategory, setSelectedCategory] = useState('all');
+            const [viewMode, setViewMode] = useState('cards');
+            const [tools, setTools] = useState([]);
+            const [isLoading, setIsLoading] = useState(true);
+            const [error, setError] = useState(null);
+            const [currentPage, setCurrentPage] = useState(1);
+            
+            useEffect(() => {
+                loadData();
+            }, []);
+
+            const loadData = async () => {
+                setIsLoading(true);
+                setError(null);
+                
+                for (const csvPath of CSV_PATHS) {
+                    try {
+                        const response = await fetch(csvPath);
+                        if (!response.ok) continue;
+                        
+                        const csvText = await response.text();
+                        if (!csvText || csvText.length < 100) continue;
+                        
+                        const parsedTools = parseCSV(csvText);
+                        if (parsedTools.length === 0) continue;
+                        
+                        setTools(parsedTools);
+                        setIsLoading(false);
+                        return;
+                        
+                    } catch (err) {
+                        continue;
+                    }
+                }
+                
+                setError('לא ניתן למצוא את קובץ הנתונים. אנא ודא שהקובץ AIToolBuzz.csv נמצא באותה תיקייה.');
+                setIsLoading(false);
+            };
+            
+            const categories = useMemo(() => {
+                const cats = new Set(tools.map(t => t.Category).filter(c => c));
+                return ['all', ...Array.from(cats)];
+            }, [tools]);
+            
+            const filteredTools = useMemo(() => {
+                return tools.filter(tool => {
+                    const matchesSearch = tool.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                        (tool['Short Description'] || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                        (tool.Keywords || '').toLowerCase().includes(searchTerm.toLowerCase());
+                    const matchesCategory = selectedCategory === 'all' || tool.Category === selectedCategory;
+                    return matchesSearch && matchesCategory;
+                });
+            }, [tools, searchTerm, selectedCategory]);
+
+            useEffect(() => {
+                setCurrentPage(1);
+            }, [searchTerm, selectedCategory]);
+
+            const totalPages = Math.ceil(filteredTools.length / ITEMS_PER_PAGE);
+            const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+            const endIndex = startIndex + ITEMS_PER_PAGE;
+            const currentTools = filteredTools.slice(startIndex, endIndex);
+
+            const stats = useMemo(() => {
+                if (tools.length === 0) return {};
+                return {
+                    total: tools.length,
+                    active: tools.filter(t => t['Website Status'] === 'Active').length,
+                    categories: new Set(tools.map(t => t.Category).filter(c => c)).size,
+                    countries: new Set(tools.map(t => t.Country).filter(c => c)).size
+                };
+            }, [tools]);
+
+            useEffect(() => {
+                if (currentPage > 1) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }, [currentPage]);
+            
+            if (isLoading) {
+                return <LoadingState />;
+            }
+
+            if (error) {
+                return <ErrorState error={error} onRetry={loadData} />;
+            }
+            
+            return (
+                <div className="min-h-screen">
+                    {/* Hero Header */}
+                    <header className="gradient-bg text-white py-16 px-4 mb-10 shadow-2xl">
+                        <div className="container mx-auto text-center">
+                            <h1 className="text-5xl md:text-6xl font-black mb-4 drop-shadow-lg">
+                                🤖 כלי בינה מלאכותית
+                            </h1>
+                            <p className="text-xl md:text-2xl mb-3 font-medium opacity-95">
+                                דשבורד מקיף של כלי ה-AI המובילים לשנת 2025
+                            </p>
+                            <p className="text-lg opacity-90">
+                                ChatGPT • Claude • Google Gemini • ועוד מאות כלים מתקדמים
+                            </p>
+                            <div className="mt-6 inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full">
+                                <span className="font-bold">מופעל על ידי BDNHOST</span> 🚀
+                            </div>
+                        </div>
+                    </header>
+
+                    <div className="container mx-auto px-4 pb-12">
+                        {/* Stats */}
+                        <section className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10">
+                            <div className="stat-card rounded-2xl shadow-xl p-6 text-center border-2 border-purple-100">
+                                <div className="text-5xl font-black stat-number mb-2">{stats.total}</div>
+                                <div className="text-sm font-bold text-gray-600">כלי AI</div>
+                            </div>
+                            <div className="stat-card rounded-2xl shadow-xl p-6 text-center border-2 border-green-100">
+                                <div className="text-5xl font-black text-green-600 mb-2">{stats.active}</div>
+                                <div className="text-sm font-bold text-gray-600">פעילים</div>
+                            </div>
+                            <div className="stat-card rounded-2xl shadow-xl p-6 text-center border-2 border-pink-100">
+                                <div className="text-5xl font-black text-pink-600 mb-2">{stats.categories}</div>
+                                <div className="text-sm font-bold text-gray-600">קטגוריות</div>
+                            </div>
+                            <div className="stat-card rounded-2xl shadow-xl p-6 text-center border-2 border-orange-100">
+                                <div className="text-5xl font-black text-orange-600 mb-2">{stats.countries}</div>
+                                <div className="text-sm font-bold text-gray-600">מדינות</div>
+                            </div>
+                        </section>
+                        
+                        {/* Filters */}
+                        <section className="filter-section rounded-2xl shadow-2xl p-6 md:p-8 mb-10 border-2 border-purple-100">
+                            <div className="grid md:grid-cols-3 gap-4 md:gap-6">
+                                <div className="md:col-span-2">
+                                    <label className="block text-sm font-black text-purple-900 mb-3 flex items-center gap-2">
+                                        🔍 חיפוש חכם
+                                    </label>
+                                    <input
+                                        type="search"
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                        placeholder="חפש לפי שם, תיאור או מילות מפתח..."
+                                        className="search-input w-full px-5 py-4 border-2 border-purple-200 rounded-xl focus:ring-0 focus:outline-none transition-all font-medium text-lg"
+                                    />
+                                </div>
+                                
+                                <div>
+                                    <label className="block text-sm font-black text-purple-900 mb-3 flex items-center gap-2">
+                                        📂 סינון לפי קטגוריה
+                                    </label>
+                                    <select
+                                        value={selectedCategory}
+                                        onChange={(e) => setSelectedCategory(e.target.value)}
+                                        className="w-full px-5 py-4 border-2 border-purple-200 rounded-xl focus:ring-0 focus:outline-none focus:border-purple-400 transition-all font-bold text-lg bg-white"
+                                    >
+                                        <option value="all">🌟 כל הקטגוריות</option>
+                                        {categories.filter(cat => cat !== 'all').map(cat => (
+                                            <option key={cat} value={cat}>
+                                                {getCategoryIcon(cat)} {translateCategory(cat)}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div className="mt-6 flex items-center justify-between flex-wrap gap-4">
+                                <div className="text-sm font-bold text-purple-900 bg-purple-50 px-4 py-2 rounded-xl">
+                                    מציג <span className="text-purple-600 text-lg">{startIndex + 1}-{Math.min(endIndex, filteredTools.length)}</span> מתוך <span className="text-purple-600 text-lg">{filteredTools.length}</span> כלים
+                                </div>
+                                <div className="flex gap-3">
+                                    <button
+                                        onClick={() => setViewMode('cards')}
+                                        className={`px-5 py-3 rounded-xl font-bold transition-all shadow-lg ${
+                                            viewMode === 'cards' 
+                                                ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white scale-105' 
+                                                : 'bg-white text-purple-700 hover:bg-purple-50 border-2 border-purple-200'
+                                        }`}
+                                    >
+                                        📇 כרטיסים
+                                    </button>
+                                    <button
+                                        onClick={() => setViewMode('table')}
+                                        className={`px-5 py-3 rounded-xl font-bold transition-all shadow-lg ${
+                                            viewMode === 'table' 
+                                                ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white scale-105' 
+                                                : 'bg-white text-purple-700 hover:bg-purple-50 border-2 border-purple-200'
+                                        }`}
+                                    >
+                                        📊 טבלה
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        {/* Content */}
+                        <main>
+                            {viewMode === 'cards' ? (
+                                <>
+                                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                                        {currentTools.map((tool, idx) => (
+                                            <ToolCard key={idx} tool={tool} />
+                                        ))}
+                                    </div>
+                                    <Pagination 
+                                        currentPage={currentPage}
+                                        totalPages={totalPages}
+                                        onPageChange={setCurrentPage}
+                                    />
+                                </>
+                            ) : (
+                                <>
+                                    <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-purple-100">
+                                        <div className="overflow-x-auto">
+                                            <table className="w-full">
+                                                <thead className="gradient-bg text-white">
+                                                    <tr>
+                                                        <th className="px-6 py-5 text-right font-black text-lg">שם הכלי</th>
+                                                        <th className="px-6 py-5 text-right font-black text-lg">קטגוריה</th>
+                                                        <th className="px-6 py-5 text-right font-black text-lg">משימה ראשית</th>
+                                                        <th className="px-6 py-5 text-right font-black text-lg">שנה</th>
+                                                        <th className="px-6 py-5 text-right font-black text-lg">מדינה</th>
+                                                        <th className="px-6 py-5 text-right font-black text-lg">קישור</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {currentTools.map((tool, idx) => {
+                                                        const websiteUrl = replaceReferral(tool.Website);
+                                                        const categoryHebrew = translateCategory(tool.Category);
+                                                        const categoryIcon = getCategoryIcon(tool.Category);
+                                                        
+                                                        return (
+                                                            <tr key={idx} className="border-b-2 border-purple-50 hover:bg-purple-50 transition-all">
+                                                                <td className="px-6 py-5">
+                                                                    <div className="flex items-center gap-3">
+                                                                        <img 
+                                                                            src={tool.Logo} 
+                                                                            alt={`לוגו ${tool.Name}`}
+                                                                            className="w-12 h-12 rounded-xl object-cover shadow-md"
+                                                                            loading="lazy"
+                                                                            onError={(e) => {
+                                                                                e.target.src = 'https://via.placeholder.com/48/667eea/ffffff?text=' + (tool.Name[0] || '?');
+                                                                            }}
+                                                                        />
+                                                                        <span className="font-black text-gray-900 text-lg">{tool.Name}</span>
+                                                                    </div>
+                                                                </td>
+                                                                <td className="px-6 py-5">
+                                                                    {tool.Category && (
+                                                                        <span className="text-xs bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 px-3 py-2 rounded-full font-bold">
+                                                                            {categoryIcon} {categoryHebrew}
+                                                                        </span>
+                                                                    )}
+                                                                </td>
+                                                                <td className="px-6 py-5 text-sm text-gray-700 font-medium">
+                                                                    {(tool['Primary Task'] || '').substring(0, 60)}...
+                                                                </td>
+                                                                <td className="px-6 py-5 text-sm font-bold text-gray-600">
+                                                                    {tool['Year Founded']}
+                                                                </td>
+                                                                <td className="px-6 py-5 text-sm font-bold text-gray-600">
+                                                                    {tool.Country}
+                                                                </td>
+                                                                <td className="px-6 py-5">
+                                                                    {tool.Website && (
+                                                                        <a 
+                                                                            href={websiteUrl}
+                                                                            target="_blank"
+                                                                            rel="noopener noreferrer"
+                                                                            className="inline-flex items-center gap-1 text-purple-600 hover:text-purple-800 font-black text-sm bg-purple-50 px-3 py-2 rounded-lg hover:bg-purple-100 transition-all"
+                                                                        >
+                                                                            🔗 אתר
+                                                                        </a>
+                                                                    )}
+                                                                </td>
+                                                            </tr>
+                                                        );
+                                                    })}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <Pagination 
+                                        currentPage={currentPage}
+                                        totalPages={totalPages}
+                                        onPageChange={setCurrentPage}
+                                    />
+                                </>
+                            )}
+                        </main>
+                        
+                        {/* Footer */}
+                        <footer className="mt-16 text-center">
+                            <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-purple-100">
+                                <p className="text-lg font-bold text-gray-800 mb-2">
+                                    נוצר באהבה על ידי <span className="hero-gradient font-black text-xl">BDNHOST</span> 🚀
+                                </p>
+                                <p className="text-sm text-gray-600 mb-3">
+                                    פתרונות טכנולוגיים מתקדמים | עודכן לאחרונה: {new Date().toLocaleDateString('he-IL')}
+                                </p>
+                                <p className="text-xs text-gray-500">
+                                    כל הקישורים כוללים ?ref=bdnhost.net למעקב ואנליטיקס
+                                </p>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Dashboard />, document.getElementById('root'));
+    </script>
+</body>
+</html>
