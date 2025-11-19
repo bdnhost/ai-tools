@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>כלי בינה מלאכותית | דשבורד מקיף של כלי AI מובילים 2025 | BDNHOST</title>
+    <meta name="description" content="גלה את כלי הבינה המלאכותית המובילים לשנת 2025. דשבורד מקיף עם מעל 1000 כלי AI למשימות שונות: ChatGPT, Claude, Google Gemini ועוד. מידע מפורט, השוואות וקישורים ישירים.">
+    <meta name="keywords" content="בינה מלאכותית, כלי AI, ChatGPT, Claude, Google Gemini, כלי AI בעברית, בינה מלאכותית 2025, AI tools, דשבורד AI, BDNHOST">
+    <meta name="author" content="BDNHOST">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://www.bdnhost.net/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.bdnhost.net/">
+    <meta property="og:title" content="כלי בינה מלאכותית | דשבורד מקיף של כלי AI מובילים 2025">
+    <meta property="og:description" content="גלה את כלי הבינה המלאכותית המובילים. דשבורד מקיף עם פרטים, השוואות וקישורים ישירים למעל 1000 כלי AI.">
+    <meta property="og:image" content="https://www.bdnhost.net/og-image.jpg">
+    <meta property="og:locale" content="he_IL">
+    <meta property="og:site_name" content="BDNHOST AI Tools">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.bdnhost.net/">
+    <meta property="twitter:title" content="כלי בינה מלאכותית | דשבורד מקיף של כלי AI מובילים 2025">
+    <meta property="twitter:description" content="גלה את כלי הבינה המלאכותית המובילים. דשבורד מקיף עם פרטים, השוואות וקישורים ישירים למעל 1000 כלי AI.">
+    <meta property="twitter:image" content="https://www.bdnhost.net/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BDNHOST",
+        "url": "https://www.bdnhost.net",
+        "logo": "https://www.bdnhost.net/logo.png",
+        "description": "פלטפורמה מקיפה לכלי בינה מלאכותית בעברית",
+        "sameAs": [
+            "https://www.facebook.com/bdnhost",
+            "https://www.linkedin.com/company/bdnhost"
+        ]
+    }
+    </script>
+    
+    <!-- Structured Data - WebSite -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "BDNHOST AI Tools Dashboard",
+        "url": "https://www.bdnhost.net",
+        "description": "דשבורד מקיף של כלי בינה מלאכותית",
+        "inLanguage": "he-IL",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.bdnhost.net/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <!-- Google Analytics - החלף ב-ID שלך -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        .tool-card {
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .status-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .category-badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .pagination-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .pagination-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+        }
+        
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .loading-spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
+    <!-- Skip to content for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-lg">
+        דלג לתוכן הראשי
+    </a>
+    
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useMemo, useEffect } = React;
+
+        const ITEMS_PER_PAGE = 8;
+        const BDNHOST_REF = '?ref=bdnhost.net';
+        const CSV_FILE_PATH = './AIToolBuzz.csv'; // הקובץ צריך להיות באותה תיקייה
+
+        function parseCSV(csv) {
+            const lines = csv.trim().split('\n');
+            const headers = lines[0].split(',');
+            
+            return lines.slice(1).map(line => {
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+                
+                for (let i = 0; i < line.length; i++) {
+                    const char = line[i];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                values.push(current.trim());
+                
+                const obj = {};
+                headers.forEach((header, index) => {
+                    obj[header.trim()] = values[index] || '';
+                });
+                return obj;
+            }).filter(tool => tool.Name);
+        }
+
+        function replaceReferral(url) {
+            if (!url) return url;
+            const baseUrl = url.split('?')[0];
+            return baseUrl + BDNHOST_REF;
+        }
+
+        function ToolCard({ tool }) {
+            const websiteUrl = replaceReferral(tool.Website);
+            const infoUrl = replaceReferral(tool.Link);
+
+            return (
+                <article className="tool-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" itemScope itemType="https://schema.org/SoftwareApplication">
+                    <div className="relative">
+                        <img 
+                            src={tool.Logo} 
+                            alt={`לוגו ${tool.Name}`}
+                            className="w-full h-48 object-cover"
+                            itemProp="image"
+                            loading="lazy"
+                            onError={(e) => {
+                                e.target.src = 'https://via.placeholder.com/400x300/667eea/ffffff?text=' + encodeURIComponent(tool.Name);
+                            }}
+                        />
+                        <div className="absolute top-4 left-4">
+                            {tool['Website Status'] === 'Active' && (
+                                <span className="status-active text-white text-xs px-3 py-1 rounded-full font-medium">
+                                    🟢 פעיל
+                                </span>
+                            )}
+                        </div>
+                    </div>
+                    
+                    <div className="p-6">
+                        <div className="flex items-start justify-between mb-3">
+                            <h3 className="text-2xl font-bold text-gray-900" itemProp="name">{tool.Name}</h3>
+                            {tool['Year Founded'] && (
+                                <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded" itemProp="datePublished">
+                                    {tool['Year Founded']}
+                                </span>
+                            )}
+                        </div>
+                        
+                        {tool.Category && (
+                            <div className="mb-4">
+                                <span className="category-badge text-white text-xs px-3 py-1 rounded-full font-medium" itemProp="applicationCategory">
+                                    {tool.Category}
+                                </span>
+                            </div>
+                        )}
+                        
+                        <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3" itemProp="description">
+                            {tool['Short Description']}
+                        </p>
+                        
+                        {tool['Primary Task'] && (
+                            <div className="mb-4">
+                                <div className="text-sm font-semibold text-gray-700 mb-2">משימה ראשית:</div>
+                                <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
+                                    {tool['Primary Task']}
+                                </div>
+                            </div>
+                        )}
+                        
+                        {tool.Keywords && (
+                            <div className="mb-4">
+                                <div className="text-sm font-semibold text-gray-700 mb-2">מילות מפתח:</div>
+                                <div className="flex flex-wrap gap-2">
+                                    {tool.Keywords.split(',').slice(0, 4).map((keyword, idx) => (
+                                        <span key={idx} className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full" itemProp="keywords">
+                                            {keyword.trim()}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                        
+                        <div className="grid grid-cols-2 gap-3 mb-4 text-sm">
+                            {tool.Country && (
+                                <div>
+                                    <span className="text-gray-500">מדינה:</span>
+                                    <span className="mr-2 font-medium" itemProp="countryOfOrigin">{tool.Country}</span>
+                                </div>
+                            )}
+                            {tool.industry && (
+                                <div>
+                                    <span className="text-gray-500">תעשייה:</span>
+                                    <span className="mr-2 font-medium">{tool.industry}</span>
+                                </div>
+                            )}
+                        </div>
+                        
+                        <div className="flex gap-2">
+                            {tool.Website && (
+                                <a 
+                                    href={websiteUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition text-center font-medium"
+                                    itemProp="url"
+                                    aria-label={`בקר באתר הרשמי של ${tool.Name}`}
+                                >
+                                    🌐 אתר רשמי
+                                </a>
+                            )}
+                            {tool.Link && (
+                                <a 
+                                    href={infoUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-pink-700 transition text-center font-medium"
+                                    aria-label={`מידע נוסף על ${tool.Name}`}
+                                >
+                                    ℹ️ מידע נוסף
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </article>
+            );
+        }
+
+        function Pagination({ currentPage, totalPages, onPageChange }) {
+            const pages = [];
+            const maxPagesToShow = 7;
+            
+            let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+            let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+            
+            if (endPage - startPage < maxPagesToShow - 1) {
+                startPage = Math.max(1, endPage - maxPagesToShow + 1);
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                pages.push(i);
+            }
+            
+            return (
+                <nav className="flex items-center justify-center gap-2 mt-8" role="navigation" aria-label="ניווט בין דפים">
+                    <button
+                        onClick={() => onPageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="pagination-btn px-4 py-2 bg-white rounded-lg shadow-md font-medium text-gray-700 hover:bg-blue-50 disabled:opacity-50"
+                        aria-label="דף קודם"
+                    >
+                        ← הקודם
+                    </button>
+                    
+                    {startPage > 1 && (
+                        <>
+                            <button
+                                onClick={() => onPageChange(1)}
+                                className="pagination-btn px-4 py-2 bg-white rounded-lg shadow-md font-medium text-gray-700 hover:bg-blue-50"
+                                aria-label="דף ראשון"
+                            >
+                                1
+                            </button>
+                            {startPage > 2 && <span className="text-gray-400" aria-hidden="true">...</span>}
+                        </>
+                    )}
+                    
+                    {pages.map(page => (
+                        <button
+                            key={page}
+                            onClick={() => onPageChange(page)}
+                            className={`pagination-btn px-4 py-2 rounded-lg shadow-md font-medium transition ${
+                                currentPage === page
+                                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white'
+                                    : 'bg-white text-gray-700 hover:bg-blue-50'
+                            }`}
+                            aria-label={`דף ${page}`}
+                            aria-current={currentPage === page ? 'page' : undefined}
+                        >
+                            {page}
+                        </button>
+                    ))}
+                    
+                    {endPage < totalPages && (
+                        <>
+                            {endPage < totalPages - 1 && <span className="text-gray-400" aria-hidden="true">...</span>}
+                            <button
+                                onClick={() => onPageChange(totalPages)}
+                                className="pagination-btn px-4 py-2 bg-white rounded-lg shadow-md font-medium text-gray-700 hover:bg-blue-50"
+                                aria-label="דף אחרון"
+                            >
+                                {totalPages}
+                            </button>
+                        </>
+                    )}
+                    
+                    <button
+                        onClick={() => onPageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                        className="pagination-btn px-4 py-2 bg-white rounded-lg shadow-md font-medium text-gray-700 hover:bg-blue-50 disabled:opacity-50"
+                        aria-label="דף הבא"
+                    >
+                        הבא →
+                    </button>
+                </nav>
+            );
+        }
+
+        function LoadingState() {
+            return (
+                <div className="container mx-auto px-4 py-16 text-center">
+                    <div className="loading-spinner mx-auto mb-4"></div>
+                    <h2 className="text-2xl font-bold text-gray-800 mb-2">טוען נתונים...</h2>
+                    <p className="text-gray-600">אנא המתן, אנחנו מביאים עבורך את כלי ה-AI המובילים</p>
+                </div>
+            );
+        }
+
+        function ErrorState({ error, onRetry }) {
+            return (
+                <div className="container mx-auto px-4 py-16 text-center">
+                    <div className="text-6xl mb-4">⚠️</div>
+                    <h2 className="text-2xl font-bold text-gray-800 mb-2">אופס! משהו השתבש</h2>
+                    <p className="text-gray-600 mb-6">{error}</p>
+                    <button
+                        onClick={onRetry}
+                        className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition font-medium"
+                    >
+                        🔄 נסה שוב
+                    </button>
+                </div>
+            );
+        }
+
+        function Dashboard() {
+            const [searchTerm, setSearchTerm] = useState('');
+            const [selectedCategory, setSelectedCategory] = useState('all');
+            const [viewMode, setViewMode] = useState('cards');
+            const [tools, setTools] = useState([]);
+            const [isLoading, setIsLoading] = useState(true);
+            const [error, setError] = useState(null);
+            const [currentPage, setCurrentPage] = useState(1);
+            
+            // Load CSV data
+            useEffect(() => {
+                loadData();
+            }, []);
+
+            const loadData = async () => {
+                try {
+                    setIsLoading(true);
+                    setError(null);
+                    
+                    const response = await fetch(CSV_FILE_PATH);
+                    if (!response.ok) {
+                        throw new Error('לא ניתן לטעון את קובץ הנתונים. אנא ודא שהקובץ AIToolBuzz.csv נמצא באותה תיקייה.');
+                    }
+                    
+                    const csvText = await response.text();
+                    const parsedTools = parseCSV(csvText);
+                    
+                    if (parsedTools.length === 0) {
+                        throw new Error('לא נמצאו כלים בקובץ.');
+                    }
+                    
+                    setTools(parsedTools);
+                } catch (err) {
+                    console.error('Error loading CSV:', err);
+                    setError(err.message);
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+            
+            const categories = useMemo(() => {
+                const cats = new Set(tools.map(t => t.Category).filter(c => c));
+                return ['all', ...Array.from(cats)];
+            }, [tools]);
+            
+            const filteredTools = useMemo(() => {
+                return tools.filter(tool => {
+                    const matchesSearch = tool.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                        (tool['Short Description'] || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                        (tool.Keywords || '').toLowerCase().includes(searchTerm.toLowerCase());
+                    const matchesCategory = selectedCategory === 'all' || tool.Category === selectedCategory;
+                    return matchesSearch && matchesCategory;
+                });
+            }, [tools, searchTerm, selectedCategory]);
+
+            useEffect(() => {
+                setCurrentPage(1);
+            }, [searchTerm, selectedCategory]);
+
+            const totalPages = Math.ceil(filteredTools.length / ITEMS_PER_PAGE);
+            const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+            const endIndex = startIndex + ITEMS_PER_PAGE;
+            const currentTools = filteredTools.slice(startIndex, endIndex);
+
+            const stats = useMemo(() => {
+                if (tools.length === 0) return {};
+                return {
+                    total: tools.length,
+                    active: tools.filter(t => t['Website Status'] === 'Active').length,
+                    categories: new Set(tools.map(t => t.Category).filter(c => c)).size,
+                    countries: new Set(tools.map(t => t.Country).filter(c => c)).size
+                };
+            }, [tools]);
+
+            useEffect(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, [currentPage]);
+            
+            if (isLoading) {
+                return <LoadingState />;
+            }
+
+            if (error) {
+                return <ErrorState error={error} onRetry={loadData} />;
+            }
+            
+            return (
+                <div className="container mx-auto px-4 py-8" id="main-content">
+                    {/* Header */}
+                    <header className="text-center mb-8">
+                        <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                            🤖 כלי בינה מלאכותית - דשבורד מקיף 2025
+                        </h1>
+                        <p className="text-gray-600 text-lg mb-2">
+                            גלה את כלי ה-AI המובילים למשימות שונות - ChatGPT, Claude, Google Gemini ועוד
+                        </p>
+                        <p className="text-sm text-gray-500">
+                            מופעל על ידי <a href="https://www.bdnhost.net" className="font-bold text-blue-600 hover:underline">BDNHOST</a> | פלטפורמת פתרונות טכנולוגיים
+                        </p>
+                    </header>
+
+                    {/* Stats */}
+                    <section className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8" aria-label="סטטיסטיקות">
+                        <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+                            <div className="text-3xl font-bold text-blue-600">{stats.total}</div>
+                            <div className="text-sm text-gray-600 mt-1">סך כל הכלים</div>
+                        </div>
+                        <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+                            <div className="text-3xl font-bold text-green-600">{stats.active}</div>
+                            <div className="text-sm text-gray-600 mt-1">כלים פעילים</div>
+                        </div>
+                        <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+                            <div className="text-3xl font-bold text-purple-600">{stats.categories}</div>
+                            <div className="text-sm text-gray-600 mt-1">קטגוריות</div>
+                        </div>
+                        <div className="bg-white rounded-xl shadow-lg p-6 text-center">
+                            <div className="text-3xl font-bold text-orange-600">{stats.countries}</div>
+                            <div className="text-sm text-gray-600 mt-1">מדינות</div>
+                        </div>
+                    </section>
+                    
+                    {/* Filters */}
+                    <section className="bg-white rounded-2xl shadow-lg p-6 mb-8" aria-label="סינון וחיפוש">
+                        <div className="grid md:grid-cols-3 gap-4">
+                            <div className="md:col-span-2">
+                                <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">
+                                    🔍 חיפוש
+                                </label>
+                                <input
+                                    id="search"
+                                    type="search"
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    placeholder="חפש לפי שם, תיאור או מילות מפתח..."
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    aria-label="חפש כלי AI"
+                                />
+                            </div>
+                            
+                            <div>
+                                <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+                                    📂 קטגוריה
+                                </label>
+                                <select
+                                    id="category"
+                                    value={selectedCategory}
+                                    onChange={(e) => setSelectedCategory(e.target.value)}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    aria-label="סנן לפי קטגוריה"
+                                >
+                                    {categories.map(cat => (
+                                        <option key={cat} value={cat}>
+                                            {cat === 'all' ? 'כל הקטגוריות' : cat}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div className="mt-4 flex items-center justify-between flex-wrap gap-2">
+                            <div className="text-sm text-gray-600" role="status" aria-live="polite">
+                                מציג <span className="font-bold text-blue-600">{startIndex + 1}-{Math.min(endIndex, filteredTools.length)}</span> מתוך <span className="font-bold text-blue-600">{filteredTools.length}</span> כלים
+                            </div>
+                            <div className="flex gap-2" role="group" aria-label="בחר תצוגה">
+                                <button
+                                    onClick={() => setViewMode('cards')}
+                                    className={`px-4 py-2 rounded-lg font-medium transition ${
+                                        viewMode === 'cards' 
+                                            ? 'bg-blue-600 text-white' 
+                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                    }`}
+                                    aria-pressed={viewMode === 'cards'}
+                                >
+                                    📇 כרטיסים
+                                </button>
+                                <button
+                                    onClick={() => setViewMode('table')}
+                                    className={`px-4 py-2 rounded-lg font-medium transition ${
+                                        viewMode === 'table' 
+                                            ? 'bg-blue-600 text-white' 
+                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                    }`}
+                                    aria-pressed={viewMode === 'table'}
+                                >
+                                    📊 טבלה
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    {/* Content */}
+                    <main>
+                        {viewMode === 'cards' ? (
+                            <>
+                                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                    {currentTools.map((tool, idx) => (
+                                        <ToolCard key={idx} tool={tool} />
+                                    ))}
+                                </div>
+                                {totalPages > 1 && (
+                                    <Pagination 
+                                        currentPage={currentPage}
+                                        totalPages={totalPages}
+                                        onPageChange={setCurrentPage}
+                                    />
+                                )}
+                            </>
+                        ) : (
+                            <>
+                                <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                                    <div className="overflow-x-auto">
+                                        <table className="w-full" role="table">
+                                            <thead className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+                                                <tr>
+                                                    <th scope="col" className="px-6 py-4 text-right">שם</th>
+                                                    <th scope="col" className="px-6 py-4 text-right">קטגוריה</th>
+                                                    <th scope="col" className="px-6 py-4 text-right">משימה</th>
+                                                    <th scope="col" className="px-6 py-4 text-right">שנה</th>
+                                                    <th scope="col" className="px-6 py-4 text-right">מדינה</th>
+                                                    <th scope="col" className="px-6 py-4 text-right">פעולות</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {currentTools.map((tool, idx) => {
+                                                    const websiteUrl = replaceReferral(tool.Website);
+                                                    return (
+                                                        <tr key={idx} className="border-b hover:bg-gray-50 transition">
+                                                            <td className="px-6 py-4">
+                                                                <div className="flex items-center gap-3">
+                                                                    <img 
+                                                                        src={tool.Logo} 
+                                                                        alt={`לוגו ${tool.Name}`}
+                                                                        className="w-10 h-10 rounded-lg object-cover"
+                                                                        loading="lazy"
+                                                                        onError={(e) => {
+                                                                            e.target.src = 'https://via.placeholder.com/40/667eea/ffffff?text=' + (tool.Name[0] || '?');
+                                                                        }}
+                                                                    />
+                                                                    <span className="font-semibold text-gray-900">{tool.Name}</span>
+                                                                </div>
+                                                            </td>
+                                                            <td className="px-6 py-4">
+                                                                {tool.Category && (
+                                                                    <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">
+                                                                        {tool.Category}
+                                                                    </span>
+                                                                )}
+                                                            </td>
+                                                            <td className="px-6 py-4 text-sm text-gray-600">
+                                                                {(tool['Primary Task'] || '').substring(0, 50)}...
+                                                            </td>
+                                                            <td className="px-6 py-4 text-sm text-gray-600">
+                                                                {tool['Year Founded']}
+                                                            </td>
+                                                            <td className="px-6 py-4 text-sm text-gray-600">
+                                                                {tool.Country}
+                                                            </td>
+                                                            <td className="px-6 py-4">
+                                                                {tool.Website && (
+                                                                    <a 
+                                                                        href={websiteUrl}
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                        className="text-blue-600 hover:text-blue-800 font-medium"
+                                                                        aria-label={`בקר באתר ${tool.Name}`}
+                                                                    >
+                                                                        🔗 אתר
+                                                                    </a>
+                                                                )}
+                                                            </td>
+                                                        </tr>
+                                                    );
+                                                })}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                {totalPages > 1 && (
+                                    <Pagination 
+                                        currentPage={currentPage}
+                                        totalPages={totalPages}
+                                        onPageChange={setCurrentPage}
+                                    />
+                                )}
+                            </>
+                        )}
+                    </main>
+                    
+                    {/* Footer */}
+                    <footer className="mt-12 text-center text-gray-500 text-sm">
+                        <p className="mb-2">
+                            נוצר על ידי <a href="https://www.bdnhost.net" className="font-bold text-blue-600 hover:underline" rel="noopener noreferrer">BDNHOST</a> 🚀 | 
+                            פתרונות טכנולוגיים מתקדמים | עודכן לאחרונה: {new Date().toLocaleDateString('he-IL')}
+                        </p>
+                        <p className="text-xs text-gray-400">
+                            כל הקישורים כוללים ?ref=bdnhost.net למעקב ואנליטיקס | 
+                            <a href="#" className="hover:underline mr-2">תנאי שימוש</a> |
+                            <a href="#" className="hover:underline mr-2">מדיניות פרטיות</a> |
+                            <a href="#" className="hover:underline">צור קשר</a>
+                        </p>
+                    </footer>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Dashboard />, document.getElementById('root'));
+    </script>
+</body>
+</html>
